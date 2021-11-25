@@ -1,4 +1,4 @@
-package bubble.test.ex06;
+package bubble.test.ex08;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -22,7 +22,7 @@ public class BubbleFrame extends JFrame{
 	}
 	
 	private void initObject() {
-		backgroundMap = new JLabel(new ImageIcon("image/backgroundMapService.png"));
+		backgroundMap = new JLabel(new ImageIcon("image/backgroundMap.png"));
 //		backgroundMap.setSize(100,100);
 //		backgroundMap.setLocation(300,300);
 //		backgroundMap.setSize(1000,600);
@@ -47,12 +47,12 @@ public class BubbleFrame extends JFrame{
 				
 				switch(e.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
-						if(!player.isLeft()) {
+						if(!player.isLeft() && !player.isLeftWallCrash()) {
 							player.left();
 						}
 						break;
 					case KeyEvent.VK_RIGHT:
-						if(!player.isRight()) {
+						if(!player.isRight() && !player.isRightWallCrash()) {
 							player.right();
 						}
 						break;

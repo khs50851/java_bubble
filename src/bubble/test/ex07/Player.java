@@ -1,4 +1,4 @@
-package bubble.test.ex06;
+package bubble.test.ex07;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -18,6 +18,11 @@ public class Player extends JLabel implements Moveable {
 	private boolean right;
 	private boolean up;
 	private boolean down;
+	
+	// 벽에 충돌한 상태
+	private boolean leftWallCrash;
+	private boolean rightWallCrash;
+	
 	
 	// 플레이어의 속도
 	private final int SPEED = 4;
@@ -45,6 +50,8 @@ public class Player extends JLabel implements Moveable {
 		right = false;
 		up = false;
 		down = false;
+		leftWallCrash = false;
+		rightWallCrash = false;
 		
 		setIcon(playerR);
 		setSize(50, 50);
@@ -59,6 +66,7 @@ public class Player extends JLabel implements Moveable {
 	public void left() {
 		System.out.println("left");
 		left = true;
+		
 		new Thread(()->{
 			while(left) {
 				setIcon(playerL);
@@ -69,6 +77,9 @@ public class Player extends JLabel implements Moveable {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+				
+				
+				
 			}
 		}).start();
 		
